@@ -9,6 +9,7 @@
     "dev": "vinext dev",
     "build": "vinext build",
     "build:pages": "node scripts/build-pages.mjs",
+    "verify:pages": "node scripts/verify-pages-output.mjs",
     "start": "vinext start",
     "test": "node --test tests/portfolio.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",

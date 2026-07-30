@@ -32,6 +32,7 @@ async function readOptional(path) {
 }
 
 const pagesBuild = await readOptional("../scripts/build-pages.mjs");
+const pagesVerifier = await readOptional("../scripts/verify-pages-output.mjs");
 const pagesTsConfig = await readOptional("../tsconfig.pages.json");
 const pagesWorkflow = await readOptional(
   "../.github/workflows/deploy-pages.yml",
@@ -75,8 +76,15 @@ test("GitHub Pages build exports beneath the repository base path", () => {
   assert.match(nextConfig, /\/Porfolio/);
   assert.match(nextConfig, /tsconfig\.pages\.json/);
   assert.match(packageJson, /"build:pages":\s*"node scripts\/build-pages\.mjs"/);
+  assert.match(
+    packageJson,
+    /"verify:pages":\s*"node scripts\/verify-pages-output\.mjs"/,
+  );
   assert.match(pagesBuild, /NEXT_PUBLIC_GITHUB_PAGES/);
   assert.match(pagesBuild, /GITHUB_PAGES/);
+  assert.match(pagesVerifier, /\/Porfolio\/_next\//);
+  assert.match(pagesVerifier, /\/Porfolio\/favicon\.svg/);
+  assert.match(pagesVerifier, /\/Porfolio\/ai-creator-studio\.png/);
   assert.match(pagesTsConfig, /"app\/\*\*\/\*\.tsx"/);
   assert.match(pagesTsConfig, /"lib\/\*\*\/\*\.ts"/);
 });
@@ -94,6 +102,7 @@ test("GitHub Actions deploys the static output from main", () => {
   assert.match(pagesWorkflow, /actions\/upload-pages-artifact@v4/);
   assert.match(pagesWorkflow, /actions\/deploy-pages@v4/);
   assert.match(pagesWorkflow, /path:\s*\.\/out/);
+  assert.match(pagesWorkflow, /pnpm verify:pages/);
   assert.match(pagesWorkflow, /pages:\s*write/);
   assert.match(pagesWorkflow, /id-token:\s*write/);
 });
