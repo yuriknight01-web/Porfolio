@@ -53,10 +53,35 @@ test("page exposes the editorial sections and two MVP projects", () => {
   assert.match(page, /Fluffy Star Auto Battler/);
 });
 
+test("project cards use editorial visuals and link to both live MVPs", () => {
+  assert.match(page, /<h2>Project<\/h2>/);
+  assert.match(page, /className="creator-visual"/);
+  assert.match(page, /AI CREATOR/);
+  assert.match(page, /AI WORKFLOW SAAS/);
+  assert.match(
+    page,
+    /https:\/\/yuriknight01-web\.github\.io\/ai-creator-studio\//,
+  );
+  assert.match(
+    page,
+    /https:\/\/yuriknight01-web\.github\.io\/fluffy-lineup-portfolio\//,
+  );
+  assert.doesNotMatch(page, /ai-creator-studio\.png/);
+  assert.doesNotMatch(page, /<img/);
+});
+
 test("styles include the approved palette and motion fallback", () => {
   assert.match(css, /#090909/i);
   assert.match(css, /#c8ff3d/i);
   assert.match(css, /prefers-reduced-motion/);
+  assert.match(
+    css,
+    /\.project-wordmark\s*\{[^}]*white-space:\s*nowrap;/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width:\s*620px\)[\s\S]*?\.project-wordmark\s*\{[^}]*font-size:\s*17\.5vw;/,
+  );
 });
 
 test("finished metadata replaces the starter preview", () => {
@@ -88,15 +113,20 @@ test("GitHub Pages build exports beneath the repository base path", () => {
   assert.match(pagesBuild, /GITHUB_PAGES/);
   assert.match(pagesVerifier, /\/Porfolio\/_next\//);
   assert.match(pagesVerifier, /\/Porfolio\/favicon\.svg/);
-  assert.match(pagesVerifier, /\/Porfolio\/ai-creator-studio\.png/);
+  assert.doesNotMatch(
+    pagesVerifier,
+    /access\(new URL\("ai-creator-studio\.png"/,
+  );
+  assert.doesNotMatch(pagesVerifier, /\/Porfolio\/ai-creator-studio\.png/);
+  assert.match(pagesVerifier, /AI CREATOR/);
+  assert.match(pagesVerifier, /AI WORKFLOW SAAS/);
   assert.match(pagesTsConfig, /"app\/\*\*\/\*\.tsx"/);
   assert.match(pagesTsConfig, /"lib\/\*\*\/\*\.ts"/);
 });
 
-test("public assets are prefixed for GitHub Pages", () => {
-  assert.match(page, /withBasePath/);
-  assert.match(page, /ai-creator-studio\.png/);
+test("GitHub Pages keeps its prefixed favicon without the removed screenshot", () => {
   assert.match(layout, /\/Porfolio\/favicon\.svg/);
+  assert.doesNotMatch(page, /ai-creator-studio\.png/);
 });
 
 test("GitHub Actions deploys the static output from main", () => {

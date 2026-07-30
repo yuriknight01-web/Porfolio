@@ -436,18 +436,6 @@ summary:focus-visible {
     linear-gradient(to right, rgba(5, 7, 10, 0.2), transparent 40%);
 }
 
-.project-visual img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: transform 900ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-card:hover .project-visual img {
-  transform: scale(1.018);
-}
-
 .project-number {
   position: absolute;
   top: 26px;
@@ -535,6 +523,72 @@ a.project-action:hover span {
 .project-action--disabled {
   cursor: not-allowed;
   opacity: 0.44;
+}
+
+.project-card--creator .project-visual {
+  background:
+    radial-gradient(circle at 50% 42%, rgba(49, 210, 255, 0.18), transparent 22%),
+    linear-gradient(135deg, #071825, #080a0d 62%);
+}
+
+.creator-visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.project-wordmark {
+  z-index: 1;
+  color: var(--paper);
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(4.6rem, 10.5vw, 10.5rem);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 0.68;
+  white-space: nowrap;
+}
+
+.creator-visual small {
+  z-index: 1;
+  margin-top: 56px;
+  color: #31d2ff;
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.5em;
+}
+
+.creator-node {
+  position: absolute;
+  top: 10%;
+  display: grid;
+  width: clamp(3rem, 6vw, 6rem);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid #31d2ff;
+  border-radius: 50%;
+  color: #31d2ff;
+  font-family: var(--font-mono), monospace;
+}
+
+.creator-orbit {
+  position: absolute;
+  border: 1px solid rgba(49, 210, 255, 0.28);
+  border-radius: 50%;
+}
+
+.creator-orbit--one {
+  width: min(70vw, 820px);
+  aspect-ratio: 1;
+}
+
+.creator-orbit--two {
+  width: min(45vw, 520px);
+  aspect-ratio: 1;
+  border-style: dashed;
+  transform: rotate(-24deg);
 }
 
 .project-card--fluffy .project-visual {
@@ -877,10 +931,6 @@ footer {
     min-height: 480px;
   }
 
-  .project-visual img {
-    object-position: 55% center;
-  }
-
   .project-info {
     padding-block: 34px 70px;
   }
@@ -893,10 +943,16 @@ footer {
     font-size: 25vw;
   }
 
+  .project-wordmark {
+    font-size: 17.5vw;
+  }
+
+  .creator-orbit--one,
   .orbit--one {
     width: 130vw;
   }
 
+  .creator-orbit--two,
   .orbit--two {
     width: 90vw;
   }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { withBasePath } from "../lib/public-path";
 
 const navItems = [
   ["summary", "Summary"],
@@ -22,10 +21,7 @@ const projects = [
     focus: "AI Workflow SaaS",
     contribution:
       "Workflow, dashboard, information architecture, interaction, visual direction",
-    image: withBasePath("/ai-creator-studio.png"),
-    imageAlt:
-      "AI Creator Studio interface showing a cinematic creative production workspace",
-    href: undefined as string | undefined,
+    href: "https://yuriknight01-web.github.io/ai-creator-studio/",
     tone: "creator",
   },
   {
@@ -38,7 +34,7 @@ const projects = [
     focus: "Systems + Player Experience",
     contribution:
       "Gameplay systems, lobby UX, battle flow, progression, interface design",
-    href: undefined as string | undefined,
+    href: "https://yuriknight01-web.github.io/fluffy-lineup-portfolio/",
     tone: "fluffy",
   },
 ];
@@ -267,7 +263,7 @@ export default function Home() {
       <section id="projects" className="projects content-section">
         <div className="section-shell section-intro project-heading">
           <p className="section-label">02 / SELECTED WORK</p>
-          <h2>Products, not just pictures.</h2>
+          <h2>Project</h2>
           <p>
             Two working prototypes that show how I think through workflows,
             systems, interaction, and visual direction.
@@ -281,8 +277,18 @@ export default function Home() {
               className={`project-card project-card--${project.tone}`}
             >
               <div className="project-visual">
-                {project.image ? (
-                  <img src={project.image} alt={project.imageAlt} />
+                {project.tone === "creator" ? (
+                  <div className="creator-visual" aria-hidden="true">
+                    <span className="creator-orbit creator-orbit--one" />
+                    <span className="creator-orbit creator-orbit--two" />
+                    <span className="creator-node">AI</span>
+                    <strong className="project-wordmark">
+                      AI CREATOR
+                      <br />
+                      STUDIO
+                    </strong>
+                    <small>AI WORKFLOW SAAS</small>
+                  </div>
                 ) : (
                   <div className="fluffy-visual" aria-hidden="true">
                     <span className="orbit orbit--one" />
