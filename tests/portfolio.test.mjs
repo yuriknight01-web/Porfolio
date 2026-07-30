@@ -34,6 +34,7 @@ async function readOptional(path) {
 const pagesBuild = await readOptional("../scripts/build-pages.mjs");
 const pagesVerifier = await readOptional("../scripts/verify-pages-output.mjs");
 const pagesTsConfig = await readOptional("../tsconfig.pages.json");
+const pnpmWorkspace = await readOptional("../pnpm-workspace.yaml");
 const pagesWorkflow = await readOptional(
   "../.github/workflows/deploy-pages.yml",
 );
@@ -80,6 +81,9 @@ test("GitHub Pages build exports beneath the repository base path", () => {
     packageJson,
     /"verify:pages":\s*"node scripts\/verify-pages-output\.mjs"/,
   );
+  for (const dependency of ["esbuild", "sharp", "unrs-resolver", "workerd"]) {
+    assert.match(pnpmWorkspace, new RegExp(`${dependency}: true`));
+  }
   assert.match(pagesBuild, /NEXT_PUBLIC_GITHUB_PAGES/);
   assert.match(pagesBuild, /GITHUB_PAGES/);
   assert.match(pagesVerifier, /\/Porfolio\/_next\//);
