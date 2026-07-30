@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { withBasePath } from "../lib/public-path";
 
 const navItems = [
   ["summary", "Summary"],
@@ -21,7 +22,7 @@ const projects = [
     focus: "AI Workflow SaaS",
     contribution:
       "Workflow, dashboard, information architecture, interaction, visual direction",
-    image: "/ai-creator-studio.png",
+    image: withBasePath("/ai-creator-studio.png"),
     imageAlt:
       "AI Creator Studio interface showing a cinematic creative production workspace",
     href: undefined as string | undefined,

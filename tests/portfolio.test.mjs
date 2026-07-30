@@ -32,6 +32,7 @@ async function readOptional(path) {
 }
 
 const pagesBuild = await readOptional("../scripts/build-pages.mjs");
+const pagesTsConfig = await readOptional("../tsconfig.pages.json");
 const pagesWorkflow = await readOptional(
   "../.github/workflows/deploy-pages.yml",
 );
@@ -72,9 +73,12 @@ test("GitHub Pages build exports beneath the repository base path", () => {
   assert.match(nextConfig, /output:\s*["']export["']/);
   assert.match(nextConfig, /basePath/);
   assert.match(nextConfig, /\/Porfolio/);
+  assert.match(nextConfig, /tsconfig\.pages\.json/);
   assert.match(packageJson, /"build:pages":\s*"node scripts\/build-pages\.mjs"/);
   assert.match(pagesBuild, /NEXT_PUBLIC_GITHUB_PAGES/);
   assert.match(pagesBuild, /GITHUB_PAGES/);
+  assert.match(pagesTsConfig, /"app\/\*\*\/\*\.tsx"/);
+  assert.match(pagesTsConfig, /"lib\/\*\*\/\*\.ts"/);
 });
 
 test("public assets are prefixed for GitHub Pages", () => {

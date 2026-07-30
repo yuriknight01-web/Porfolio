@@ -24,8 +24,14 @@ export const metadata: Metadata = {
   description:
     "Product Designer creating AI-powered creator tools through product strategy, UX, visual storytelling, and creative technology.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg",
+    icon:
+      process.env.GITHUB_PAGES === "true"
+        ? "/Porfolio/favicon.svg"
+        : "/favicon.svg",
+    shortcut:
+      process.env.GITHUB_PAGES === "true"
+        ? "/Porfolio/favicon.svg"
+        : "/favicon.svg",
   },
 };
 

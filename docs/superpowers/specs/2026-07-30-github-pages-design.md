@@ -14,9 +14,10 @@ The repository keeps two independent build targets:
 - `next build` runs with `GITHUB_PAGES=true` to produce a static `out/`
   directory for GitHub Pages.
 
-`next.config.ts` conditionally enables static export, trailing slashes,
-`basePath: "/Porfolio"`, and `assetPrefix: "/Porfolio/"` only for the Pages
-build. Local development and Sites continue to use root-relative behavior.
+`next.config.ts` conditionally enables static export, trailing slashes, and
+`basePath: "/Porfolio"` only for the Pages build. Next.js applies the base path
+to framework assets automatically. Local development and Sites continue to use
+root-relative behavior.
 
 ## Asset Strategy
 
