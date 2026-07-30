@@ -14,6 +14,27 @@ const css = await readFile(
   new URL("../app/globals.css", import.meta.url),
   "utf8",
 );
+const nextConfig = await readFile(
+  new URL("../next.config.ts", import.meta.url),
+  "utf8",
+);
+const packageJson = await readFile(
+  new URL("../package.json", import.meta.url),
+  "utf8",
+);
+
+async function readOptional(path) {
+  try {
+    return await readFile(new URL(path, import.meta.url), "utf8");
+  } catch {
+    return "";
+  }
+}
+
+const pagesBuild = await readOptional("../scripts/build-pages.mjs");
+const pagesWorkflow = await readOptional(
+  "../.github/workflows/deploy-pages.yml",
+);
 
 test("page presents Xitao as a Product Designer", () => {
   assert.match(page, /Xitao/);
@@ -44,4 +65,31 @@ test("finished metadata replaces the starter preview", () => {
 test("unavailable links are represented without broken hash navigation", () => {
   assert.match(page, /aria-disabled/);
   assert.doesNotMatch(page, /href=["']#["']/);
+});
+
+test("GitHub Pages build exports beneath the repository base path", () => {
+  assert.match(nextConfig, /GITHUB_PAGES/);
+  assert.match(nextConfig, /output:\s*["']export["']/);
+  assert.match(nextConfig, /basePath/);
+  assert.match(nextConfig, /\/Porfolio/);
+  assert.match(packageJson, /"build:pages":\s*"node scripts\/build-pages\.mjs"/);
+  assert.match(pagesBuild, /NEXT_PUBLIC_GITHUB_PAGES/);
+  assert.match(pagesBuild, /GITHUB_PAGES/);
+});
+
+test("public assets are prefixed for GitHub Pages", () => {
+  assert.match(page, /withBasePath/);
+  assert.match(page, /ai-creator-studio\.png/);
+  assert.match(layout, /\/Porfolio\/favicon\.svg/);
+});
+
+test("GitHub Actions deploys the static output from main", () => {
+  assert.match(pagesWorkflow, /branches:\s*\[main\]/);
+  assert.match(pagesWorkflow, /workflow_dispatch/);
+  assert.match(pagesWorkflow, /actions\/configure-pages@v5/);
+  assert.match(pagesWorkflow, /actions\/upload-pages-artifact@v4/);
+  assert.match(pagesWorkflow, /actions\/deploy-pages@v4/);
+  assert.match(pagesWorkflow, /path:\s*\.\/out/);
+  assert.match(pagesWorkflow, /pages:\s*write/);
+  assert.match(pagesWorkflow, /id-token:\s*write/);
 });
