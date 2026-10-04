@@ -632,6 +632,56 @@ a.project-action:hover span {
   font-size: clamp(3rem, 7vw, 7rem);
 }
 
+.project-card--cozy .project-visual {
+  background: radial-gradient(ellipse at 50% 40%, #384c36, #17251d 70%);
+}
+
+.cozy-visual {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cozy-visual strong {
+  z-index: 1;
+  color: #f6edcd;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(5rem, 12vw, 12rem);
+  font-weight: 500;
+  letter-spacing: -0.07em;
+  line-height: 0.7;
+}
+
+.cozy-visual small {
+  z-index: 1;
+  max-width: 85%;
+  margin-top: 56px;
+  color: #d3bd8d;
+  font-family: var(--font-mono), monospace;
+  font-size: clamp(0.5rem, 1vw, 0.75rem);
+  letter-spacing: 0.25em;
+}
+
+.cozy-flower {
+  position: absolute;
+  top: 9%;
+  color: #d4bb85;
+  font-size: clamp(3rem, 6vw, 6rem);
+}
+
+.cozy-frame {
+  position: absolute;
+  width: min(65vw, 700px);
+  height: 79%;
+  border: 1px solid #d3bd8d40;
+  border-radius: 47% 47% 5px 5px;
+  transform: rotate(-8deg);
+}
+
 .orbit {
   position: absolute;
   border: 1px solid rgba(200, 255, 61, 0.28);

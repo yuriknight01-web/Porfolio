@@ -37,6 +37,19 @@ const projects = [
     href: "https://yuriknight01-web.github.io/fluffy-lineup-portfolio/",
     tone: "fluffy",
   },
+  {
+    number: "03",
+    title: "Cozy Tales",
+    category: "IDLE RPG / DESKTOP COMPANION",
+    description:
+      "A cozy, journal-inspired idle RPG that combines party building, equipment collecting, offline progression, and a tiny desktop companion. In development for desktop and iOS.",
+    role: "Game Design + Development",
+    focus: "Idle Systems + Everyday Companionship",
+    contribution:
+      "Party and equipment systems, offline progression, desktop companion, bilingual interface, cross-platform experience",
+    href: "https://yuriknight01-web.github.io/Cozy-Tales/",
+    tone: "cozy",
+  },
 ];
 
 const skillGroups = [
@@ -265,7 +278,7 @@ export default function Home() {
           <p className="section-label">02 / SELECTED WORK</p>
           <h2>Project</h2>
           <p>
-            Two working prototypes that show how I think through workflows,
+            Three projects that show how I think through workflows,
             systems, interaction, and visual direction.
           </p>
         </div>
@@ -289,13 +302,20 @@ export default function Home() {
                     </strong>
                     <small>AI WORKFLOW SAAS</small>
                   </div>
-                ) : (
+                ) : project.tone === "fluffy" ? (
                   <div className="fluffy-visual" aria-hidden="true">
                     <span className="orbit orbit--one" />
                     <span className="orbit orbit--two" />
                     <span className="fluffy-star">✦</span>
                     <strong>FLUFFY<br />STAR</strong>
                     <small>AUTO BATTLER</small>
+                  </div>
+                ) : (
+                  <div className="cozy-visual" aria-hidden="true">
+                    <span className="cozy-flower">✿</span>
+                    <span className="cozy-frame" />
+                    <strong>COZY<br />TALES</strong>
+                    <small>A LITTLE ADVENTURE, ALWAYS BY YOUR SIDE</small>
                   </div>
                 )}
                 <span className="project-number">{project.number}</span>
@@ -320,7 +340,7 @@ export default function Home() {
                     <dd>{project.contribution}</dd>
                   </div>
                 </dl>
-                <ProjectAction href={project.href} />
+                <ProjectAction href={project.href} label={project.tone === "cozy" ? "Visit game website" : "Open MVP"} />
               </div>
             </article>
           ))}
