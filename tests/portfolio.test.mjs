@@ -45,12 +45,15 @@ test("page presents Xitao as a Product Designer", () => {
   assert.match(page, /AI-powered creator tools/);
 });
 
-test("page exposes the editorial sections and two MVP projects", () => {
+test("page exposes the editorial sections and all three projects", () => {
   for (const id of ["summary", "about", "projects", "skills", "contact"]) {
     assert.match(page, new RegExp(`id=["']${id}["']`));
   }
   assert.match(page, /AI Creator Studio/);
   assert.match(page, /Fluffy Star Auto Battler/);
+  assert.match(page, /Cozy Tales/);
+  assert.match(page, /https:\/\/yuriknight01-web\.github\.io\/Cozy-Tales\//);
+  assert.match(page, /Visit game website/);
 });
 
 test("project cards use editorial visuals and link to both live MVPs", () => {
