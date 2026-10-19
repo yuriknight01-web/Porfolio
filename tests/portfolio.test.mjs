@@ -50,7 +50,7 @@ test("page exposes the editorial sections and all three projects", () => {
     assert.match(page, new RegExp(`id=["']${id}["']`));
   }
   assert.match(page, /AI Creator Studio/);
-  assert.match(page, /Fluffy Star Auto Battler/);
+  assert.match(page, /Pet Codex/);
   assert.match(page, /Cozy Tales/);
   assert.match(page, /https:\/\/yuriknight01-web\.github\.io\/Cozy-Tales\//);
   assert.match(page, /Visit game website/);
@@ -67,7 +67,7 @@ test("project cards use editorial visuals and link to both live MVPs", () => {
   );
   assert.match(
     page,
-    /https:\/\/yuriknight01-web\.github\.io\/fluffy-lineup-portfolio\//,
+    /https:\/\/yuriknight01-web\.github\.io\/3D\//,
   );
   assert.doesNotMatch(page, /ai-creator-studio\.png/);
   assert.doesNotMatch(page, /<img/);
