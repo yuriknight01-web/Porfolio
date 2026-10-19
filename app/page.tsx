@@ -26,7 +26,7 @@ const projects = [
   },
   {
     number: "02",
-    title: "Pet Codex",
+    title: "3D Modeling Showcase",
     category: "3D CHARACTER DESIGN / INTERACTIVE SHOWCASE",
     description:
       "An interactive collection of three fantasy companions, bringing character design, AI-assisted modeling, Blender refinement, rigging, and expressive animation into a real-time 3D showcase.",
@@ -306,7 +306,7 @@ export default function Home() {
                     <span className="orbit orbit--one" />
                     <span className="orbit orbit--two" />
                     <span className="codex-pet" />
-                    <strong>PET<br />CODEX</strong>
+                    <strong>3D<br />MODELING</strong>
                     <small>THREE COMPANIONS. A WORLD OF THEIR OWN.</small>
                   </div>
                 ) : (
