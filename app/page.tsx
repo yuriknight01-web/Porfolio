@@ -26,16 +26,16 @@ const projects = [
   },
   {
     number: "02",
-    title: "Fluffy Star Auto Battler",
-    category: "GAME PRODUCT DESIGN / SYSTEMS",
+    title: "Pet Codex",
+    category: "3D CHARACTER DESIGN / INTERACTIVE SHOWCASE",
     description:
-      "An approachable auto-battler shaped through clear lobby UX, readable battle flow, progression, economy, and collection systems.",
-    role: "Game Product Design",
-    focus: "Systems + Player Experience",
+      "An interactive collection of three fantasy companions, bringing character design, AI-assisted modeling, Blender refinement, rigging, and expressive animation into a real-time 3D showcase.",
+    role: "Character Design + 3D Production",
+    focus: "3D Modeling + Character Animation",
     contribution:
-      "Gameplay systems, lobby UX, battle flow, progression, interface design",
-    href: "https://yuriknight01-web.github.io/fluffy-lineup-portfolio/",
-    tone: "fluffy",
+      "Character direction, mesh refinement, rigging, animation, interactive 360° viewer",
+    href: "https://yuriknight01-web.github.io/3D/",
+    tone: "codex",
   },
   {
     number: "03",
@@ -278,8 +278,7 @@ export default function Home() {
           <p className="section-label">02 / SELECTED WORK</p>
           <h2>Project</h2>
           <p>
-            Three projects that show how I think through workflows,
-            systems, interaction, and visual direction.
+            An AI creator tool, a 3D character collection, and a game—three ways I bring ideas to life through design and technology.
           </p>
         </div>
 
@@ -302,13 +301,13 @@ export default function Home() {
                     </strong>
                     <small>AI WORKFLOW SAAS</small>
                   </div>
-                ) : project.tone === "fluffy" ? (
-                  <div className="fluffy-visual" aria-hidden="true">
+                ) : project.tone === "codex" ? (
+                  <div className="codex-visual" aria-hidden="true">
                     <span className="orbit orbit--one" />
                     <span className="orbit orbit--two" />
-                    <span className="fluffy-star">✦</span>
-                    <strong>FLUFFY<br />STAR</strong>
-                    <small>AUTO BATTLER</small>
+                    <span className="codex-pet" />
+                    <strong>PET<br />CODEX</strong>
+                    <small>THREE COMPANIONS. A WORLD OF THEIR OWN.</small>
                   </div>
                 ) : (
                   <div className="cozy-visual" aria-hidden="true">
@@ -340,7 +339,7 @@ export default function Home() {
                     <dd>{project.contribution}</dd>
                   </div>
                 </dl>
-                <ProjectAction href={project.href} label={project.tone === "cozy" ? "Visit game website" : "Open MVP"} />
+                <ProjectAction href={project.href} label={project.tone === "cozy" ? "Visit game website" : project.tone === "codex" ? "Explore 3D collection" : "Open MVP"} />
               </div>
             </article>
           ))}

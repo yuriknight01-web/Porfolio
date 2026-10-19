@@ -1051,3 +1051,12 @@ footer {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Pet Codex replaces the former Fluffy project slot. */
+.project-card--codex .project-visual { background: #e4ead8; color: #304b3c; }
+.codex-visual { position: relative; width: 100%; height: 100%; min-height: 440px; overflow: hidden; display: flex; flex-direction: column; justify-content: center; padding: 7%; }
+.codex-visual strong { position: relative; z-index: 1; font-size: clamp(72px, 12vw, 180px); font-weight: 850; letter-spacing: -.07em; line-height: .85; }
+.codex-visual small { position: relative; z-index: 1; margin-top: 30px; font-size: 10px; letter-spacing: .15em; }
+.codex-pet { position: absolute; right: 3%; top: 2%; width: 52%; height: 95%; background: url('../public/pet-codex-ember.png') center / contain no-repeat; transform: rotate(7deg); }
+.codex-visual .orbit { border-color: #bccca7; }
+@media(max-width:620px) { .codex-visual { min-height: 330px; } .codex-visual strong { font-size: 22vw; } .codex-visual small { max-width: 170px; font-size: 8px; line-height: 1.8; } .codex-pet { right: -4%; width: 58%; } }
