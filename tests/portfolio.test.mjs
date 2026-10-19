@@ -50,7 +50,7 @@ test("page exposes the editorial sections and all three projects", () => {
     assert.match(page, new RegExp(`id=["']${id}["']`));
   }
   assert.match(page, /AI Creator Studio/);
-  assert.match(page, /Pet Codex/);
+  assert.match(page, /3D Modeling Showcase/);
   assert.match(page, /Cozy Tales/);
   assert.match(page, /https:\/\/yuriknight01-web\.github\.io\/Cozy-Tales\//);
   assert.match(page, /Visit game website/);
