@@ -26,7 +26,7 @@ const projects = [
   },
   {
     number: "02",
-    title: "3D Modeling Showcase",
+    title: "Fluffy Lineup",
     category: "3D CHARACTER DESIGN / INTERACTIVE SHOWCASE",
     description:
       "An interactive collection of three fantasy companions, bringing character design, AI-assisted modeling, Blender refinement, rigging, and expressive animation into a real-time 3D showcase.",
@@ -306,7 +306,7 @@ export default function Home() {
                     <span className="orbit orbit--one" />
                     <span className="orbit orbit--two" />
                     <span className="codex-pet" />
-                    <strong>3D<br />MODELING</strong>
+                    <strong>FLUFFY<br />LINEUP</strong>
                     <small>THREE COMPANIONS. A WORLD OF THEIR OWN.</small>
                   </div>
                 ) : (
