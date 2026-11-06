@@ -1060,3 +1060,5 @@ footer {
 .codex-pet { position: absolute; right: 3%; top: 2%; width: 52%; height: 95%; background: url('../public/pet-codex-ember.png') center / contain no-repeat; transform: rotate(7deg); }
 .codex-visual .orbit { border-color: #bccca7; }
 @media(max-width:620px) { .codex-visual { min-height: 330px; } .codex-visual strong { font-size: 22vw; } .codex-visual small { max-width: 170px; font-size: 8px; line-height: 1.8; } .codex-pet { right: -4%; width: 58%; } }
+
+.abyss-visual{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:8%;color:#ead9ad;background:linear-gradient(90deg,#071017cc,#07101730),url('/Porfolio/abyss-expedition.jpg') center/cover}.abyss-visual strong{font-size:clamp(34px,6vw,88px);line-height:1;letter-spacing:.06em}.abyss-visual small{margin-top:24px;letter-spacing:.25em}

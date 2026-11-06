@@ -12,6 +12,17 @@ const navItems = [
 
 const projects = [
   {
+    number: "04",
+    title: "Abyss Expedition / 深渊远征",
+    category: "TURN-BASED RPG / UNITY MVP",
+    description: "A dark fantasy RPG in development: explore branching paths with dice, coordinate a four-character party, and discover the current character, enemy, and combat effects showcase. 深渊题材回合制 RPG：骰子探索、四人队伍战斗与角色原画、动作及特效展示。",
+    role: "Game Design + Development / 游戏设计与开发",
+    focus: "Dice Exploration + Party Combat / 骰子探索与队伍战斗",
+    contribution: "Character direction, combat interactions, animation and VFX integration, bilingual MVP showcase",
+    href: "https://yuriknight01-web.github.io/roguemmorpg/",
+    tone: "abyss",
+  },
+  {
     number: "01",
     title: "AI Creator Studio",
     category: "AI CREATOR TOOL / PRODUCT DESIGN",
@@ -278,7 +289,7 @@ export default function Home() {
           <p className="section-label">02 / SELECTED WORK</p>
           <h2>Project</h2>
           <p>
-            An AI creator tool, a 3D character collection, and a game—three ways I bring ideas to life through design and technology.
+            An AI creator tool, a 3D character collection, and two games—four ways I bring ideas to life through design and technology.
           </p>
         </div>
 
@@ -300,6 +311,11 @@ export default function Home() {
                       STUDIO
                     </strong>
                     <small>AI WORKFLOW SAAS</small>
+                  </div>
+                ) : project.tone === "abyss" ? (
+                  <div className="abyss-visual" aria-hidden="true">
+                    <strong>ABYSS<br />EXPEDITION</strong>
+                    <small>深渊远征 · UNITY MVP</small>
                   </div>
                 ) : project.tone === "codex" ? (
                   <div className="codex-visual" aria-hidden="true">
@@ -339,7 +355,7 @@ export default function Home() {
                     <dd>{project.contribution}</dd>
                   </div>
                 </dl>
-                <ProjectAction href={project.href} label={project.tone === "cozy" ? "Visit game website" : project.tone === "codex" ? "Explore 3D collection" : "Open MVP"} />
+                <ProjectAction href={project.href} label={project.tone === "abyss" ? "Explore game MVP / 查看游戏" : project.tone === "cozy" ? "Visit game website" : project.tone === "codex" ? "Explore 3D collection" : "Open MVP"} />
               </div>
             </article>
           ))}
